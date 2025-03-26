@@ -6,7 +6,9 @@ interface PageProps {
   shortLinkList?: (ShortLink | null)[];
 }
 
-const BASE_URL = "https://redirection-method.vercel.app";
+const BASE_URL = Deno.env.get("DENO_ENV") === "dev"
+  ? "http://localhost:8000"
+  : "https://redirection-method.vercel.app";
 
 export function Layout({ children }: { children: ComponentChildren }) {
   return (
